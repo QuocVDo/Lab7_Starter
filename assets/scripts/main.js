@@ -176,6 +176,14 @@ function bindEscKey() {
    * if the escape key is pressed, use your router to navigate() to the 'home'
    * page. This will let us go back to the home page from the detailed page.
    */
+
+  document.addEventListener('keydown',function(e){
+    if(e.key == "Escape") {
+      //Debug
+      //console.log("Escape was pressed");
+      router.navigate('home');
+    }
+  });
 }
 
 /**
@@ -197,4 +205,21 @@ function bindPopstate() {
    * so your navigate() function does not add your going back action to the history,
    * creating an infinite loop
    */
+
+   window.addEventListener('popstate', function(popEvent){
+    //debug 
+    console.log(popEvent.state);
+
+    if(popEvent.state) {
+      //the event has .state object with property 'state' that has the page we went to navigate to.
+      router.navigate(popEvent.state.state,true);
+    }
+    else {
+      router.navigate('home',true);
+    }
+ 
+  });
+  
+
 }
+

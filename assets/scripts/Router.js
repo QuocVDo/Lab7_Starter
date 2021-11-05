@@ -85,13 +85,12 @@ export class Router {
       hash = '#'+ page;
     }
 
+
     //if statePopped is false and window.location.hash doesn't match hash
     //add current state to history
-    //ASK ABOUT THIS I HAVE NO IDEA
-    if(statePopped == false && window.location.hash != hash) {
-
-      const state = {'page': this.state}
-      history.pushState(state,'',hash); //unsure about this
+    if(!statePopped) {
+      const state = {'state': page};
+      history.pushState(state,'', hash);
     }
 
     //call stored function for given page
