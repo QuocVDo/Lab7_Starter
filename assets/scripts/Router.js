@@ -75,6 +75,8 @@ export class Router {
     //create variable called hash.
     let hash;
 
+
+
     //if page that we're on is home hash is empty
     if (page == 'home') {
       hash = '';
@@ -89,8 +91,11 @@ export class Router {
     //if statePopped is false and window.location.hash doesn't match hash
     //add current state to history
     if(!statePopped) {
+
+
+      //debug
       const state = {'state': page};
-      history.pushState(state,'', hash);
+      history.pushState(state,'', window.location.origin+hash);
     }
 
     //call stored function for given page
